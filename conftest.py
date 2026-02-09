@@ -6,8 +6,8 @@ import pytest
 BASE_URL = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
 @pytest.fixture(scope="session")
 def driver():
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install())) #setup
     driver.maximize_window()
     driver.get(BASE_URL)
-    yield driver
-    driver.quit()
+    yield driver #give the driver to test
+    driver.quit() #teardown
